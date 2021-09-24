@@ -5,7 +5,7 @@ import defaultSpinnerSize from './SpinnerComponent.constants';
 
 const SpinnerComponent = () => (
   <div className="w-100 d-flex justify-content-center align-items-center">
-    <Spinner color="info" size={defaultSpinnerSize} />
+    <Spinner color="info" style={defaultSpinnerSize} />
   </div>
 );
 

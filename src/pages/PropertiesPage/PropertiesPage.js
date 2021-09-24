@@ -1,37 +1,20 @@
-import { useEffect } from 'react';
-import usePropertyApi from '../../hooks/usePropertyApi/usePropertyApi';
+import React, { useState } from 'react';
+import { Container } from 'reactstrap';
+
+import PropertyCards from './PropertyCards/PropertyCards';
+import PropertyLeasesTable from './PropertyLeasesTable/PropertyLeasesTable';
 
 const PropertiesPage = () => {
-  const {
-    loadingProperties,
-    errorGettingProperties,
-    propertiesData,
-    getProperties,
-    getProperty,
-    loadingProperty,
-    propertyData,
-    errorGettingProperty,
-  } = usePropertyApi();
+  const selectedPropertyId = useState(null);
 
-  useEffect(() => {
-    console.log('test');
-    getProperties();
-    getProperty(1);
-  }, [getProperties, getProperty]);
-
-  useEffect(() => {
-    if (propertiesData) {
-      console.log('properties data', propertiesData);
-    }
-  }, [propertiesData]);
-
-  useEffect(() => {
-    if (propertyData) {
-      console.log('property data', propertyData);
-    }
-  }, [propertyData]);
-
-  return 'Hello';
+  return (
+    <main className="mt-5 mb-4">
+      <Container>
+        <PropertyCards />
+        <PropertyLeasesTable />
+      </Container>
+    </main>
+  );
 };
 
 export default PropertiesPage;
