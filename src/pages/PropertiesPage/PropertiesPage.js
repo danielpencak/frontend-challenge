@@ -14,6 +14,7 @@ const PropertiesPage = () => {
   } = usePropertyApi();
 
   useEffect(() => {
+    console.log('test');
     getProperties();
     getProperty(1);
   }, [getProperties, getProperty]);
