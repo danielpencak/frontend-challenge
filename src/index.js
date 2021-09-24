@@ -1,11 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+import './index.scss';
+import PropertiesPage from './pages/PropertiesPage/PropertiesPage.lazy';
+
+ReactDOM.render(<PropertiesPage />, document.getElementById('root'));
