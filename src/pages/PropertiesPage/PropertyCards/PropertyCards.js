@@ -6,12 +6,30 @@ import SpinnerComponent from '../../../components/SpinnerComponent/SpinnerCompon
 import PropertyCard from '../PropertyCard/PropertyCard';
 import { CardDeck } from 'reactstrap';
 
-const PropertyCards = ({ setSelectedPropertyId }) => {
+const PropertyCards = ({
+  setSelectedPropertyId,
+  setIsLoadingCardData,
+  setCardData,
+  setErrorGettingCardData,
+  setSelectedPropertyName,
+}) => {
   const { loadingProperties, propertiesData, errorGettingProperties, getProperties } = usePropertyApi();
 
   useEffect(() => {
     getProperties();
   }, [getProperties]);
+
+  useEffect(() => {
+    setIsLoadingCardData(loadingProperties);
+  }, [setIsLoadingCardData, loadingProperties]);
+
+  useEffect(() => {
+    setCardData(propertiesData);
+  }, [setCardData, propertiesData]);
+
+  useEffect(() => {
+    setErrorGettingCardData(errorGettingProperties);
+  }, [setErrorGettingCardData, errorGettingProperties]);
 
   if (loadingProperties) {
     return <SpinnerComponent />;
@@ -22,9 +40,16 @@ const PropertyCards = ({ setSelectedPropertyId }) => {
   }
 
   return (
-    <CardDeck>
+    <CardDeck className="mb-5">
       {propertiesData?.map((propertyData) => {
-        return <PropertyCard data={propertyData} key={propertyData.id} setSelectedPropertyId={setSelectedPropertyId} />;
+        return (
+          <PropertyCard
+            data={propertyData}
+            key={propertyData.id}
+            setSelectedPropertyId={setSelectedPropertyId}
+            setSelectedPropertyName={setSelectedPropertyName}
+          />
+        );
       })}
     </CardDeck>
   );
@@ -32,6 +57,10 @@ const PropertyCards = ({ setSelectedPropertyId }) => {
 
 PropertyCards.propTypes = {
   setSelectedPropertyId: PropTypes.func.isRequired,
+  setIsLoadingCardData: PropTypes.func.isRequired,
+  setErrorGettingCardData: PropTypes.func.isRequired,
+  setCardData: PropTypes.func.isRequired,
+  setSelectedPropertyName: PropTypes.func.isRequired,
 };
 
 export default PropertyCards;

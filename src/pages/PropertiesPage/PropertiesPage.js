@@ -2,18 +2,32 @@ import React, { useState } from 'react';
 import { Container } from 'reactstrap';
 
 import PropertyCards from './PropertyCards/PropertyCards';
-import PropertyLeasesTable from './PropertyLeasesTable/PropertyLeasesTable';
+import PropertyLeasesTableWrapper from './PropertyLeasesTableWrapper/PropertyLeasesTableWrapper';
 
 const PropertiesPage = () => {
   const [selectedPropertyId, setSelectedPropertyId] = useState(null);
-
-  console.log('selected id ', selectedPropertyId);
+  const [selectedPropertyName, setSelectedPropertyName] = useState('');
+  const [isLoadingCardData, setIsLoadingCardData] = useState(true);
+  const [cardData, setCardData] = useState(null);
+  const [errorGettingCardData, setErrorGettingCardData] = useState(null);
 
   return (
     <main className="mt-5 mb-4">
       <Container>
-        <PropertyCards setSelectedPropertyId={setSelectedPropertyId} />
-        <PropertyLeasesTable selectedPropertyId={selectedPropertyId} />
+        <PropertyCards
+          setSelectedPropertyId={setSelectedPropertyId}
+          setIsLoadingCardData={setIsLoadingCardData}
+          setErrorGettingCardData={setErrorGettingCardData}
+          setSelectedPropertyName={setSelectedPropertyName}
+          setCardData={setCardData}
+        />
+        {!isLoadingCardData && cardData && !errorGettingCardData && (
+          <PropertyLeasesTableWrapper
+            selectedPropertyId={selectedPropertyId}
+            isLoadingCardData={isLoadingCardData}
+            selectedPropertyName={selectedPropertyName}
+          />
+        )}
       </Container>
     </main>
   );

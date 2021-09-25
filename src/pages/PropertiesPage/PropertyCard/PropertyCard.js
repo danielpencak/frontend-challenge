@@ -5,12 +5,18 @@ import classnames from 'classnames';
 
 import { card, cardText } from './PropertyCard.module.scss';
 
-const PropertyCard = ({ data, setSelectedPropertyId }) => {
+const PropertyCard = ({ data, setSelectedPropertyId, setSelectedPropertyName }) => {
   const { address1, address2, baseRent, id, name, sqft } = data;
   const baseRentNumber = Number.parseInt(baseRent.replace('$', '').replace(',', '')).toFixed(2);
 
   return (
-    <Card className={classnames(card)} onClick={() => setSelectedPropertyId(id)}>
+    <Card
+      className={classnames(card)}
+      onClick={() => {
+        setSelectedPropertyId(id);
+        setSelectedPropertyName(name);
+      }}
+    >
       <CardBody className="p-0 d-flex flex-column">
         <CardTitle className="p-3 pb-5 border-bottom mb-0 font-weight-bold">{name}</CardTitle>
         <div className="p-3 d-flex flex-column justify-content-between flex-grow-1">
@@ -46,6 +52,7 @@ PropertyCard.propTypes = {
     sqft: PropTypes.number.isRequired,
   }).isRequired,
   setSelectedPropertyId: PropTypes.func.isRequired,
+  setSelectedPropertyName: PropTypes.func.isRequired,
 };
 
 export default PropertyCard;
