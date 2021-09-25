@@ -36,7 +36,7 @@ describe('buildPropertyTableRowsData', () => {
         endDate: '2028-07-31',
         startDate: '2020-08-01',
         status: 'Active',
-        primaryContact: '',
+        primaryContact: 'No primary contact',
       },
       {
         tenant: 'Space Falcon',

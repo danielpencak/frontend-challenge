@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { CardDeck } from 'reactstrap';
 
 import usePropertyApi from '../../../hooks/usePropertyApi/usePropertyApi';
 import SpinnerComponent from '../../../components/SpinnerComponent/SpinnerComponent';
 import PropertyCard from '../PropertyCard/PropertyCard';
-import { CardDeck } from 'reactstrap';
 
 const PropertyCards = ({
   setSelectedPropertyId,

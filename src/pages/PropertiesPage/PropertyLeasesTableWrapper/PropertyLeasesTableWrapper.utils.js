@@ -32,5 +32,5 @@ export const determinePrimaryContactInfo = (contacts) => {
     }
   }
 
-  return '';
+  return 'No primary contact';
 };
