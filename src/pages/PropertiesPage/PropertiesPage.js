@@ -5,13 +5,15 @@ import PropertyCards from './PropertyCards/PropertyCards';
 import PropertyLeasesTable from './PropertyLeasesTable/PropertyLeasesTable';
 
 const PropertiesPage = () => {
-  const selectedPropertyId = useState(null);
+  const [selectedPropertyId, setSelectedPropertyId] = useState(null);
+
+  console.log('selected id ', selectedPropertyId);
 
   return (
     <main className="mt-5 mb-4">
       <Container>
-        <PropertyCards />
-        <PropertyLeasesTable />
+        <PropertyCards setSelectedPropertyId={setSelectedPropertyId} />
+        <PropertyLeasesTable selectedPropertyId={selectedPropertyId} />
       </Container>
     </main>
   );

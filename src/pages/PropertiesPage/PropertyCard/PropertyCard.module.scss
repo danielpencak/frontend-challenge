@@ -1,0 +1,15 @@
+@import '../../../styles/variables';
+
+.card {
+  min-height: 250px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.cardText {
+  @include media-breakpoint-between(sm, lg) {
+    width: 100% !important;
+  }
+}
