@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SpinnerComponent from '../../../components/SpinnerComponent/SpinnerComponent';
 import usePropertyApi from '../../../hooks/usePropertyApi/usePropertyApi';
 import { buildPropertyTableRowsData } from './PropertyLeasesTableWrapper.utils';
+import PropertyLeasesTable from './PropertyLeasesTable/PropertyLeasesTable';
 
 const PropertyLeasesTableWrapper = ({ selectedPropertyId, selectedPropertyName }) => {
   const { loadingProperty, errorGettingProperty, getProperty, propertyData } = usePropertyApi();
@@ -35,7 +36,12 @@ const PropertyLeasesTableWrapper = ({ selectedPropertyId, selectedPropertyName }
     return <p>There is no lease information for {selectedPropertyName}</p>;
   }
 
-  return 'Table';
+  return (
+    <>
+      <h4 className="mb-3">{selectedPropertyName} Leases</h4>
+      <PropertyLeasesTable data={tableRowsData} />
+    </>
+  );
 };
 
 PropertyLeasesTableWrapper.defaultProps = {

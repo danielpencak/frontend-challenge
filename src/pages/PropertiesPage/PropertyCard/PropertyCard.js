@@ -43,13 +43,13 @@ const PropertyCard = ({ data, setSelectedPropertyId, setSelectedPropertyName }) 
 
 PropertyCard.propTypes = {
   data: PropTypes.shape({
-    address1: PropTypes.string.isRequired,
-    address2: PropTypes.string.isRequired,
-    baseRent: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isOccupied: PropTypes.bool.isRequired,
-    name: PropTypes.string.isRequired,
-    sqft: PropTypes.number.isRequired,
+    address1: PropTypes.string,
+    address2: PropTypes.string,
+    baseRent: PropTypes.string,
+    id: PropTypes.number,
+    isOccupied: PropTypes.bool,
+    name: PropTypes.string,
+    sqft: PropTypes.number,
   }).isRequired,
   setSelectedPropertyId: PropTypes.func.isRequired,
   setSelectedPropertyName: PropTypes.func.isRequired,
